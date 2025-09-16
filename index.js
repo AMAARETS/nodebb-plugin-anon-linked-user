@@ -438,8 +438,6 @@ plugin.checkRegister = function (params, callback) {
 };
 
 plugin.onTopicCreate = async function (post) {
-    console.log('פוסט:', post);
-
     const isAnon = await User.getUserField(post.caller.uid, 'isAnon');
     const anonIsin = await User.getUserField(post.caller.uid, 'anonIsin');
     const reg = await User.getUserField(post.caller.uid, 'uidR');
