@@ -436,6 +436,39 @@ plugin.checkRegister = function (params, callback) {
     //console.log(",,,,,,,,,,,,");
     callback(null, params);
 };
+
+plugin.onTopicCreate = async function (post) {
+    console.log('פוסט:', post);
+    return post;
+    const isAnon = await User.getUserField(post.caller.uid, 'isAnon');
+    const anonIsin = await User.getUserField(post.caller.uid, 'anonIsin');
+    const reg = await User.getUserField(post.caller.uid, 'uidR');
+    const an = await User.getUserField(post.caller.uid, 'uidA');
+    //console.log('post.data.regOrAnon:', post.data.regOrAnon)
+    //console.log('isAnon', isAnon)
+    //console.log('anonIsin', anonIsin)
+    if (isAnon) {
+        if (post.data.regOrAnon === 'regular') {
+            post.post.uid = reg;
+            await User.setUserField(post.caller.uid, 'anonDefault', 'reg');
+            await User.setUserField(reg, 'anonDefault', 'reg');
+        } else {
+            await User.setUserField(post.caller.uid, 'anonDefault', 'anon');
+            await User.setUserField(reg, 'anonDefault', 'anon');
+        }
+    } else if (anonIsin){
+        if (post.data.regOrAnon === 'anon') {
+            post.post.uid = an;
+            await User.setUserField(post.caller.uid, 'anonDefault', 'anon');
+            await User.setUserField(an, 'anonDefault', 'anon');
+        } else {
+            await User.setUserField(post.caller.uid, 'anonDefault', 'reg');
+            await User.setUserField(an, 'anonDefault', 'reg');
+        }
+    }    
+    return post;
+};
+
 plugin.onPostCreate = async function (post) {
     //console.log('פוסט:', post);
     const isAnon = await User.getUserField(post.caller.uid, 'isAnon');
@@ -466,6 +499,8 @@ plugin.onPostCreate = async function (post) {
     }    
     return post;
 };
+
+
 plugin.onUserLoggedIn = function (uid) {
     //console.log(uid);
 };
