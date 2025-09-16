@@ -439,7 +439,7 @@ plugin.checkRegister = function (params, callback) {
 
 plugin.onTopicCreate = async function (post) {
     console.log('פוסט:', post);
-    return post;
+
     const isAnon = await User.getUserField(post.caller.uid, 'isAnon');
     const anonIsin = await User.getUserField(post.caller.uid, 'anonIsin');
     const reg = await User.getUserField(post.caller.uid, 'uidR');
@@ -449,7 +449,7 @@ plugin.onTopicCreate = async function (post) {
     //console.log('anonIsin', anonIsin)
     if (isAnon) {
         if (post.data.regOrAnon === 'regular') {
-            post.post.uid = reg;
+            post.topic.uid = reg;
             await User.setUserField(post.caller.uid, 'anonDefault', 'reg');
             await User.setUserField(reg, 'anonDefault', 'reg');
         } else {
@@ -458,7 +458,7 @@ plugin.onTopicCreate = async function (post) {
         }
     } else if (anonIsin){
         if (post.data.regOrAnon === 'anon') {
-            post.post.uid = an;
+            post.topic.uid = an;
             await User.setUserField(post.caller.uid, 'anonDefault', 'anon');
             await User.setUserField(an, 'anonDefault', 'anon');
         } else {
