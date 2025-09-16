@@ -42,7 +42,7 @@
             "method": "onPostCreate"
         },
         {
-            "hook": "filter.topic.create",
+            "hook": "filter:topic.create",
             "method": "onTopicCreate"
         },
         {
