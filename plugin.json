@@ -42,6 +42,10 @@
             "method": "onPostCreate"
         },
         {
+            "hook": "filter.topic.create",
+            "method": "onTopicCreate"
+        },
+        {
             "hook": "filter:user.profileMenu",
             "method": "addProfileLink"
         },
