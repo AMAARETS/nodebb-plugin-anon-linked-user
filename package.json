@@ -1,5 +1,5 @@
 {
-    "name": "nodebb-plugin-anonymous-alt",
+    "name": "nodebb-plugin-anon-linked-user",
     "version": "1.0.9",
     "description": "Linked anonymous profiles with custom name & avatar",
     "main": "index.js",
