@@ -1,5 +1,5 @@
 {
-    "id": "nodebb-plugin-anonymous-alt",
+    "id": "nodebb-plugin-anon-linked-user",
     "name": "Anonymous Alt Profile",
     "description": "Linked anonymous profiles with custom name & avatar, synced reputation/groups",
     "url": "https://github.com/yourname/nodebb-plugin-anonymous-alt",
