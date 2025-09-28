@@ -1,6 +1,6 @@
 {
     "name": "nodebb-plugin-anon-linked-user",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Linked anonymous profiles with custom name & avatar",
     "main": "index.js",
     "author": "Your Name",
