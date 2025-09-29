@@ -11,7 +11,7 @@
     "settingsRoute": "/admin/plugins/anon-profile",
     "templates": "static/templates",
     "modules": {
-        "admin/plugins/anon-profile.js": "./static/lib/admin.js",
+        "admin/plugins/anon-profile": "./static/lib/admin.js",
         "../composer.js": "./static/lib/client.js",
         "../client/account/anon-is-in.js": "./static/lib/account/anon-is-in.js",
         "../client/account/anonymous-create.js": "./static/lib/account/anonymous-create.js"
